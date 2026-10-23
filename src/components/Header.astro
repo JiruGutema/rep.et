@@ -74,6 +74,7 @@ const navLink = (href: string) =>
       >
         <Sun class="w-4 h-4 hidden dark:block" />
         <Moon class="w-4 h-4 block dark:hidden" />
+        <span id="theme-toggle-label" class="hidden lg:inline">Dark mode</span>
         <span class="sr-only">Switch to dark mode</span>
       </button>
     </nav>
@@ -100,6 +101,10 @@ const navLink = (href: string) =>
       toggle.setAttribute("aria-label", label);
       toggle.setAttribute("aria-pressed", isDark ? "true" : "false");
       toggle.title = label;
+      const visibleLabel = toggle.querySelector("#theme-toggle-label");
+      if (visibleLabel) {
+        visibleLabel.textContent = isDark ? "Light mode" : "Dark mode";
+      }
       const text = toggle.querySelector(".sr-only");
       if (text) text.textContent = label;
     };
